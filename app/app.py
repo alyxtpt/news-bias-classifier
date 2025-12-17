@@ -2,7 +2,7 @@ import streamlit as st
 from pathlib import Path
 import joblib
 
-MODEL_PATH = Path("models/model.joblib")
+MODEL_PATH = Path("models\model.joblib")
 
 @st.cache_resource
 def load_model():
@@ -20,7 +20,7 @@ def main():
         probability = model.predict_proba([article_text])[0]
         classes = model.classes_
 
-        st.subheader("Guessed bias:", label)
+        st.subheader(f"Guessed bias: {label}")
         st.write("Probabilities:")
         for i, j in zip(classes, probability):
             st.write(f"- **{i}**: {j:.3f}")
